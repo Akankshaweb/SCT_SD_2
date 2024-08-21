@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Number Guessing Game</title>
+</head>
+<body>
+    <h1>Guess the Number Game</h1>
+    <p>Guess a number between <span id="minRange"></span> and <span id="maxRange"></span></p>
+    <input type="number" id="guessInput" />
+    <button onclick="makeGuess()">Submit Guess</button>
+    <p id="result"></p>
+
+    <script>
+        // Define the range for the random number
+const MIN = 1;
+const MAX = 100;
+
+// Generate a random number within the range
+const randomNumber = Math.floor(Math.random() * (MAX - MIN + 1)) + MIN;
+
+// Display the range in the HTML
+document.getElementById('minRange').textContent = MIN;
+document.getElementById('maxRange').textContent = MAX;
+
+// Function to handle the guess
+function makeGuess() {
+    const guessInput = document.getElementById('guessInput');
+    const guess = parseInt(guessInput.value, 10);
+    const result = document.getElementById('result');
+
+    if (isNaN(guess)) {
+        result.textContent = 'Please enter a valid number.';
+    } else if (guess < MIN || guess > MAX) {
+        result.textContent = `Please guess a number between ${MIN} and ${MAX}.`;
+    } else if (guess === randomNumber) {
+        result.textContent = 'Congratulations! You guessed the number!';
+    } else if (guess < randomNumber) {
+        result.textContent = 'Too low! Try again.';
+    } else {
+        result.textContent = 'Too high! Try again.';
+    }
+    
+    // Clear the input field after guessing
+    guessInput.value = '';
+}
+
+    </script>
+</body>
+</html>
