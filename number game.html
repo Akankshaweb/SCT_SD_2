@@ -17,14 +17,14 @@
 const MIN = 1;
 const MAX = 100;
 
-// Generate a random number within the range
+
 const randomNumber = Math.floor(Math.random() * (MAX - MIN + 1)) + MIN;
 
-// Display the range in the HTML
+
 document.getElementById('minRange').textContent = MIN;
 document.getElementById('maxRange').textContent = MAX;
 
-// Function to handle the guess
+
 function makeGuess() {
     const guessInput = document.getElementById('guessInput');
     const guess = parseInt(guessInput.value, 10);
@@ -42,7 +42,7 @@ function makeGuess() {
         result.textContent = 'Too high! Try again.';
     }
     
-    // Clear the input field after guessing
+
     guessInput.value = '';
 }
 
